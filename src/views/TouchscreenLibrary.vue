@@ -34,7 +34,7 @@
       <router-link
         tag="button"
         class="view_button"
-        v-bind:to="{ name: 'TouchscreenNowPlaying' }"
+        v-bind:to="{ name: 'TouchscreenVirtualMedia' }"
       >
         <svg>
           <use href="#svg_chevron_down" />

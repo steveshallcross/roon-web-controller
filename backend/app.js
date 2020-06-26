@@ -38,7 +38,7 @@ setting.roon = {};
 if (process.env.ROON_HOST !== undefined) {
   setting.roon.host = process.env.ROON_HOST;
 } else {
-  setting.roon.host = "";
+  setting.roon.host = "192.168.1.220";
 }
 if (process.env.ROON_PORT !== undefined) {
   setting.roon.port = process.env.ROON_PORT;
