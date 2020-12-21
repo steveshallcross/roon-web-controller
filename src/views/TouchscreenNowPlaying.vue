@@ -40,6 +40,7 @@
         </div>
       </div>
       <div class="control_container">
+        <TouchscreenVirtualMedia class="media_control_container" />
         <TouchscreenControlsMedia class="media_control_container" />
         <template v-if="current_zone.is_seek_allowed === true">
           <input
@@ -121,12 +122,14 @@
 <script>
 import TouchscreenControlsMedia from "@/components/TouchscreenControlsMedia.vue";
 import TouchscreenControlsOverlays from "@/components/TouchscreenControlsOverlays.vue";
+import TouchscreenVirtualMedia from "@/components/TouchscreenVirtualMedia.vue";
 
 export default {
   name: "TouchscreenViewNowPlaying",
   components: {
     TouchscreenControlsMedia,
     TouchscreenControlsOverlays,
+    TouchscreenVirtualMedia
   },
   computed: {
     current_zone: {

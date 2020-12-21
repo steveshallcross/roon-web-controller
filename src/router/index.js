@@ -25,11 +25,6 @@ const router = new VueRouter({
           component: () => import("@/views/TouchscreenNowPlaying.vue"),
         },
         {
-          path: "virtual_media",
-          name: "TouchscreenVirtualMedia",
-          component: () => import("@/views/TouchscreenVirtualMedia.vue"),
-        },
-        {
           path: "queue",
           name: "TouchscreenQueue",
           component: () => import("@/views/TouchscreenQueue.vue"),

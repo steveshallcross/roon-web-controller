@@ -1,27 +1,5 @@
 <template lang="html">
   <div data-name="TouchscreenVirtualMedia">
-    <div
-      v-if="current_zone && current_zone.now_playing"
-      class="now_playing_page"
-    >
-      <div class="library_view_button_container">
-        <router-link
-          tag="button"
-          class="view_button"
-          v-bind:to="{ name: 'TouchscreenLibrary' }"
-        >
-          <svg>
-            <use href="#svg_chevron_up" />
-          </svg>
-        </router-link>
-      </div>
-      <!-- <div class="cover_art_container">
-        <ImageCover
-          class="cover_art"
-          v-if="current_zone.now_playing.image_key"
-          v-bind:image_key="current_zone.now_playing.image_key"
-        />
-      </div> -->
       <div class="song_info_container">
         <svg
         
@@ -533,112 +511,15 @@ Chalky's Mix Tape #2
              y="377.28751"
              style="font-size:73.00527954px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Bradley Hand ITC;-inkscape-font-specification:Bradley Hand ITC">{{current_zone.now_playing.three_line.line1.replace(/\ \/\ /g, ", ")}}</tspan></text>
         </svg>
-
-        <!-- test
-        <div class="text_bold">
-          {{
-            current_zone.now_playing.three_line.line1.replace(/\ \/\ /g, ", ")
-          }}
-        </div>
-        <div>
-          {{
-            current_zone.now_playing.three_line.line2.replace(/\ \/\ /g, ", ")
-          }}
-        </div>
-        <div>
-          {{
-            current_zone.now_playing.three_line.line3.replace(/\ \/\ /g, ", ")
-          }}
-        </div> -->
-      </div>
-      <div class="control_container">
-        <!-- <TouchscreenControlsMedia class="media_control_container" /> -->
-        <template v-if="current_zone.is_seek_allowed === true">
-          <input
-            class="range_track_seek"
-            type="range"
-            min="0"
-            max="100"
-            v-bind:value="
-              Math.floor(
-                (current_zone.now_playing.seek_position /
-                  current_zone.now_playing.length) *
-                  100
-              )
-            "
-          />
-          <div class="song_position_container">
-            <div>
-              {{ secondsToTime(current_zone.now_playing.seek_position) }}
-            </div>
-            <div v-if="show_time_remaining === true">
-              {{
-                secondsToTime(
-                  current_zone.now_playing.length -
-                    current_zone.now_playing.seek_position
-                )
-              }}
-            </div>
-            <div v-else>
-              {{ secondsToTime(current_zone.now_playing.length) }}
-            </div>
-          </div>
-        </template>
-        <!-- <TouchscreenControlsOverlays class="overlay_controls" /> -->
-      </div>
-      <div class="queue_view_button_container">
-        <router-link
-          tag="button"
-          class="view_button"
-          v-bind:to="{ name: 'TouchscreenQueue' }"
-          ><svg>
-            <use href="#svg_chevron_down" /></svg
-        ></router-link>
-      </div>
-      <!-- <UiClock
-        v-if="clock.show_clock"
-        v-bind:class="'clock_' + clock.position"
-      /> -->
-    </div>
-    <div v-else class="not_playing_page">
-      <div class="library_view_button_container">
-        <router-link
-          tag="button"
-          class="view_button"
-          v-bind:to="{ name: 'TouchscreenLibrary' }"
-        >
-          <svg>
-            <use href="#svg_chevron_up" />
-          </svg>
-        </router-link>
-      </div>
-      <div class="not_playing_info">
-        Nothing Playing
-      </div>
-      <TouchscreenControlsOverlays class="not_playing_control_container" />
-      <div class="queue_view_button_container">
-        <router-link
-          tag="button"
-          class="view_button"
-          v-bind:to="{ name: 'TouchscreenQueue' }"
-          ><svg>
-            <use href="#svg_chevron_down" /></svg
-        ></router-link>
-      </div>
-      <UiClock v-if="clock.show_clock" class="clock_not_playing" />
     </div>
   </div>
 </template>
 
 <script>
-// import TouchscreenControlsMedia from "@/components/TouchscreenControlsMedia.vue";
-// import TouchscreenControlsOverlays from "@/components/TouchscreenControlsOverlays.vue";
 
 export default {
   name: "TouchscreenViewVirtualMedia",
   components: {
-    // TouchscreenControlsMedia,
-    // TouchscreenControlsOverlays,
   },
   computed: {
     current_zone: {
@@ -646,16 +527,6 @@ export default {
         return this.$store.state.roon.zone_list[
           this.$store.state.settings.current_zone_id
         ];
-      },
-    },
-    clock: {
-      get() {
-        return this.$store.state.settings.clock;
-      },
-    },
-    show_time_remaining: {
-      get() {
-        return this.$store.state.settings.general.show_time_remaining;
       },
     },
   },

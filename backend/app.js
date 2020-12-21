@@ -26,7 +26,7 @@ SOFTWARE.
 /* eslint-disable no-console */
 
 "use strict";
-
+require('dotenv').config();
 const sw = {};
 sw.name = "Roon Web Controller";
 sw.version = "2.0.0-alpha.0";
